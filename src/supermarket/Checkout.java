@@ -6,23 +6,53 @@
 package supermarket;
 
 
+import eventsim.Constants;
+
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
 /**
  *
  * @author evenal
  */
 public class Checkout {
     // amount of time per prouct (to scan barcode)
-    public static final int PROD_DURATION = 2;
+    int prodDuration = Constants.CHECKOUT_PROD_DURATION;
     // amount of time to pay
-    public static final int PAY_DURATION = 10;
-    //total time for checkout = PAY_DURATION + PROD_DURATION*customer.numProd
+    int payDuration = Constants.CHECKOUT_PAY_DURATION;
+    //todo: blir nullpoint i constructor pga customer finnes ikke når checkout opprettes. -> fiks??
+    Customer customer;
+    //private int totalDuration = payDuration + prodDuration * customer.numProducts;
+    int totalDuration;
+    LinkedList<Customer> customers;
 
     SuperMarket shop;
     String name;
 
-
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout" + i;
+
+        customers = new LinkedList<Customer>();
+    }
+
+    public void addCustomer(Customer c) {
+        customers.addLast(c);
+    }
+
+    public void removeCustomer() {
+        customers.removeFirst();
+    }
+
+    public Customer poll() {
+        return customers.pollFirst();
+    }
+
+    public void calculateDuration() {
+        if(customer != null) {
+            totalDuration = payDuration + (prodDuration * customer.numProducts);
+        } else {
+            System.err.println("[Checkout]customer is null.");
+        }
     }
 }
