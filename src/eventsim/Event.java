@@ -17,16 +17,17 @@ public abstract class Event {
      */
     int time;
 
-
     public Event(int time) {
         this.time = time;
     }
-
 
     public int getTime() {
         return time;
     }
 
+    public void addTime(int time) {
+        this.time += time;
+    }
 
     /**
      * Make the changes to the simulated supermarket that happens as a
