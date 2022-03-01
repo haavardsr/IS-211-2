@@ -5,6 +5,7 @@
  */
 package supermarket;
 
+import eventsim.Constants;
 import eventsim.Event;
 import eventsim.EventSim;
 
@@ -17,20 +18,20 @@ import eventsim.EventSim;
  */
 public class EndShoppingEvent extends Event {
     Customer customer;
+    int leaveTime;
 
-
-    public EndShoppingEvent(Customer customer) {
-        super(EventSim.getClock() + customer.shoppingDuration);
+    public EndShoppingEvent(int time, Customer customer) {
+        super(time);
         this.customer = customer;
+        this.leaveTime = time;
     }
-
 
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
+        System.out.println(Constants.ANSI_BRIGHT_BLUE + "customer leaving @ time: " + EventSim.getClock());
+        customer.leaveTime = leaveTime;
         return null;
     }
-
 
     @Override
     public String toString() {
