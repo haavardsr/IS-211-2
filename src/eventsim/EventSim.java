@@ -5,6 +5,7 @@
  */
 package eventsim;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -30,16 +31,13 @@ public class EventSim {
     int clock;
     Random random;
 
-
     public static EventSim getInstance() {
         return theSim;
     }
 
-
     public static int getClock() {
         return theSim.clock;
     }
-
 
     /**
      * Draw a random number in the interval min-max
@@ -52,12 +50,10 @@ public class EventSim {
         return min + theSim.random.nextInt(max - min);
     }
 
-
     public EventSim() {
         eventQueue = new PriorityQueue<>(new EventTimeComparator());
         random = new Random(42);
     }
-
 
     /**
      * Prepare the simulation by adding a list of "start" events
@@ -69,13 +65,11 @@ public class EventSim {
             eventQueue.add(e);
     }
 
-
     public void addEvent(Event e) {
         if (null == e)
             return;
         eventQueue.add(e);
     }
-
 
     /**
      * Run the simulation. Advances the time (clock) to the time when the next
@@ -89,9 +83,13 @@ public class EventSim {
             clock = e.getTime();
             addEvent(e.happen());
 
-            System.err.format("Time %d: Processing %s. Event queue:\n", clock, e.toString());
-            for (Event qe : eventQueue)
-                System.err.println("     " + qe);
+            System.out.format(Constants.ANSI_RED + "Time %d: Processing %s. Event queue:\n" + Constants.ANSI_RESET, clock, e.getClass().getSimpleName()+ "@" + e.time);
+            for (Event qe : eventQueue) {
+                System.out.println("     " + qe.getClass().getSimpleName() + "@" + qe.time);
+            }
         }
+        DecimalFormat twoDecimals = new DecimalFormat("#.##");
+        String resultMins = twoDecimals.format((double)clock/60);
+        System.out.println(Constants.ANSI_GREEN + "Final clock = " + resultMins + " minutes (" + clock + " seconds)" + Constants.ANSI_RESET);
     }
 }
