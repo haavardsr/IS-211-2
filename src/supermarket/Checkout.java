@@ -16,11 +16,11 @@ import java.util.PriorityQueue;
  * @author evenal
  */
 public class Checkout {
-    // amount of time per prouct (to scan barcode)
+    // amount of time per product (to scan barcode)
     int prodDuration = Constants.CHECKOUT_PROD_DURATION;
     // amount of time to pay
     int payDuration = Constants.CHECKOUT_PAY_DURATION;
-    //todo: blir nullpoint i constructor pga customer finnes ikke når checkout opprettes. -> fiks??
+    //todo: Blir nullpoint i constructor pga customer finnes ikke når checkout opprettes. Dette må jeg fikse HUSK!
     Customer customer;
     //private int totalDuration = payDuration + prodDuration * customer.numProducts;
     int totalDuration;
