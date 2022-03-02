@@ -22,4 +22,17 @@ public class Constants {
     public static final int CHECKOUT_PROD_DURATION = 2;
     public static final int CHECKOUT_PAY_DURATION = 10;
 
+
+
+    /**
+     * ANSI strings for formating print statements with color
+     */
+    public static final String ANSI_RESET = "\u001B[0m";
+    // --------- Forgrunnsfarger ---------
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+
+    // --------- Forgrunnsfarger ekstra lys ---------
+    public static final String ANSI_BRIGHT_BLUE = "\u001b[34;1m";
+
 }
