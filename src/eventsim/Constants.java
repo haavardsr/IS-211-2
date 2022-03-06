@@ -31,8 +31,14 @@ public class Constants {
     // --------- Forgrunnsfarger ---------
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
-
     // --------- Forgrunnsfarger ekstra lys ---------
+    public static final String ANSI_BRIGHT_RED = "\u001b[31;1m";
+    public static final String ANSI_BRIGHT_GREEN = "\u001b[32;1m";
+    public static final String ANSI_BRIGHT_YELLOW = "\u001b[33;1m";
     public static final String ANSI_BRIGHT_BLUE = "\u001b[34;1m";
+    public static final String ANSI_BRIGHT_MAGENTA = "\u001b[35;1m";
+    public static final String ANSI_BRIGHT_CYAN = "\u001b[36;1m";
+    // --------- Bakgrunnsfarger ---------
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 
 }

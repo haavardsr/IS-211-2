@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author evenal
+ * @author haavard
  */
 public class SuperMarket {
 
