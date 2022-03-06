@@ -11,7 +11,7 @@ public class WaitInQEvent extends Event {
 
     public WaitInQEvent(int time, Checkout checkout, Customer customer) {
         super(time);
-        //System.out.println(Constants.ANSI_BRIGHT_CYAN + "Waiting.." + Constants.ANSI_RESET);
+        System.out.println(Constants.ANSI_BRIGHT_CYAN + "Waiting.." + Constants.ANSI_RESET);
         this.checkout = checkout;
         this.customer = customer;
 
